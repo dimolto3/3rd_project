@@ -1,3 +1,6 @@
+import os
+from dotenv import load_dotenv
+
 import streamlit as st
 import streamlit.components.v1 as components
 
@@ -9,7 +12,9 @@ import database.sql.utils as dbconnector
 
 st.set_page_config(layout="wide")
 
-KAKAO_KEY = None
+load_dotenv()
+
+KAKAO_KEY = os.getenv("KAKAO_MAP_KEY")
 
 content_height = 500
 search_height = 100
@@ -82,7 +87,10 @@ def update_search_result(rlist:list[dict]):
 
 # 레스토랑 표기 함수
 def open_restaurant_page(restaurant_data:dict):
+    st.session_state[lat] = restaurant_data["lat"]
+    st.session_state[lng] = restaurant_data["lng"]
     st.session_state[open_restaurant] = restaurant_data
+    st.rerun()
 
 # 레스토랑 페이지 닫기
 def close_restaurant_page():
@@ -354,5 +362,5 @@ else:
 # 지도
 ######################################################################
 with map_field:
-    sample_markers = [(37.5000, 126.9277), (37.5003, 126.9267), (37.4994, 126.9278), (37.4989, 126.9251)]
-    render_kakao_map(37.5003, 126.9267, sample_markers)
+    tags = st.session_state[search_coordinates] if st.session_state[open_restaurant] is None else [(st.session_state[open_restaurant]["lat"], st.session_state[open_restaurant]["lng"]), ]
+    render_kakao_map(st.session_state[lat], st.session_state[lng], tags)
