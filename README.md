@@ -8,7 +8,7 @@
 <table>
   <tr>
     <td align="center">
-      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPm8ncNgdorJDoTp16x9uh4AJTHZzxrh2vlQ&s" width="110px;" /><br />
+      <img src="https://tamagotchi-official.com/tamagotchi/jp/character/2024/05/08/X9QXrv0KcSLHIzUl/12_%E3%81%BF%E3%82%8B%E3%81%8F%E3%81%A3%E3%81%A1.png" width="110px;" /><br />
       <b>박기은</b><br />
       <a href="https://github.com/gieun-Park">@gieun-Park</a>
     </td>
